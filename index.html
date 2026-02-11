@@ -151,21 +151,21 @@
 <div id="login-page">
     <div class="login-card">
         <div class="login-logo" style="background: none; box-shadow: none; width: 100%; height: auto; margin-bottom: -110px;">
-    <img src="https://raw.githubusercontent.com/smartbusmanager/tisalgroup/main/logo.png" 
+    <img src="https://raw.githubusercontent.com/smartbusmanager/eratrans/main/logo.png" 
          alt="Logo Utama Smart Bus Manager" 
          style="width: 380px; height: auto; object-fit: contain;">
 </div>
         
         <p style="margin-bottom: -10px; font-weight: 500; color: #666;">Dedicated to :</p>
         
-        <h2 style="font-size: 2rem; margin-top: 0; margin-bottom: -20px; color: var(--primary); letter-spacing: 0px;">TISAL Group</h2>
+        <h2 style="font-size: 2rem; margin-top: 0; margin-bottom: -20px; color: var(--primary); letter-spacing: 0px;">ERA Trans</h2>
         
         <p style="margin-bottom: 20px; font-size: 0.85rem; color: #888;">Bus Pariwisata Dengan Armada Kelas Eksekutif</p>
         
         <div style="text-align: left; margin-bottom: -10px;"><label style="font-size: 0.8rem; font-weight: bold; color: #555;">Pilih Pengguna:</label></div>
 <select id="user-select">
     <option value="Agus">Agus (Driver)</option>
-    <option value="Dani">Dani (Admin)</option>
+    <option value="Rudi">Rudi (Admin)</option>
     <option value="Owner">Owner (Pemilik)</option>
 	<option value="Admin">Admin Utama</option>     </select>
         
@@ -184,7 +184,7 @@
     <div id="main-app">
 <header class="header" style="display: flex; justify-content: space-between; align-items: center;">
     <div style="display: flex; align-items: center; gap: 12px;">
-        <img src="https://raw.githubusercontent.com/smartbusmanager/tisalgroup/main/logo2.png" 
+        <img src="https://raw.githubusercontent.com/smartbusmanager/eratrans/main/logo2.png" 
      alt="Logo Header" 
      style="height: 80px; width: auto; filter: brightness(0) invert(1);">
         <div>
@@ -370,8 +370,8 @@
             <input type="text" id="set-pass-agus" style="width: 100%; padding: 8px; margin-top: 5px;">
         </div>
         <div class="form-group" style="margin-top: 10px;">
-            <label>Password Dani (Admin)</label>
-            <input type="text" id="set-pass-dani" style="width: 100%; padding: 8px; margin-top: 5px;">
+            <label>Password Rudi (Admin)</label>
+            <input type="text" id="set-pass-rudi" style="width: 100%; padding: 8px; margin-top: 5px;">
         </div>
         <div class="form-group" style="margin-top: 10px;">
             <label>Password Admin</label>
@@ -466,11 +466,11 @@
         const KEYS = { BUS: 'bus_pro_v39_buses', SCHED: 'bus_pro_v39_scheds', EXP: 'bus_pro_v39_exps', USER: 'bus_pro_session', PASS: 'bus_pro_passwords' };
         let buses = [], schedules = [], expenses = [], currDate = new Date();
         let currentUser = null;
-        let passwords = { "Agus": "123", "Dani": "123", "Admin": "madhacker", "Owner": "tisal2026" };
+        let passwords = { "Agus": "123", "Rudi": "123", "Admin": "madhacker", "Owner": "eratrans" };
         let myChart = null;
         let currentEditExpenseId = null;
 
-        const FIREBASE_URL = "https://bus-managemen-5fca8-default-rtdb.asia-southeast1.firebasedatabase.app/.json";
+        const FIREBASE_URL = "L = "https://bus-managemen-5fca8-default-rtdb.asia-southeast1.firebasedatabase.app/eratrans/.json";
 
         // --- LOGIN LOGIC ---
         function handleLogin() {
@@ -525,7 +525,7 @@ function showMainApp() {
         if(btnBusStats) btnBusStats.style.display = 'none';
         
     } else {
-        // Tampilkan kembali untuk Dani, Owner, dan Admin
+        // Tampilkan kembali untuk Rudi, Owner, dan Admin
         if(financeCards[1]) financeCards[1].style.display = 'block';
         if(financeCards[2]) financeCards[2].style.display = 'block';
         
@@ -554,9 +554,9 @@ function openAccountSettings() {
     
     // Mengisi input dengan data password yang ada di variabel
     document.getElementById('set-pass-agus').value = passwords["Agus"] || "123";
-    document.getElementById('set-pass-dani').value = passwords["Dani"] || "123";
-    document.getElementById('set-pass-admin').value = passwords["Admin"] || "eratrans";
-    document.getElementById('set-pass-owner').value = passwords["Owner"] || "tisal2026"; // Isi default jika kosong
+    document.getElementById('set-pass-rudi').value = passwords["Rudi"] || "123";
+    document.getElementById('set-pass-admin').value = passwords["Admin"] || "madhacker";
+    document.getElementById('set-pass-owner').value = passwords["Owner"] || "eratrans"; // Isi default jika kosong
     
     document.getElementById('modal-account').style.display = 'block';
 }
@@ -565,13 +565,13 @@ function saveAccountSettings() {
     try {
         // 1. Mengambil data dari semua input (Termasuk Owner)
         const pAgus = document.getElementById('set-pass-agus').value;
-        const pDani = document.getElementById('set-pass-dani').value;
+        const pRudi = document.getElementById('set-pass-rudi').value;
         const pAdmin = document.getElementById('set-pass-admin').value;
         const pOwner = document.getElementById('set-pass-owner').value;
 
         // 2. Memperbarui variabel pusat agar data sinkron
         passwords["Agus"] = pAgus;
-        passwords["Dani"] = pDani;
+        passwords["Rudi"] = pRudi;
         passwords["Admin"] = pAdmin;
         passwords["Owner"] = pOwner;
         
@@ -816,7 +816,7 @@ function exportBusStatsToExcel() {
             <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
             <head><meta charset="UTF-8"></head>
             <body>
-                <h2 style="color: #005a9c;">LAPORAN PERFORMA ARMADA - TISAL GROUP</h2>
+                <h2 style="color: #005a9c;">LAPORAN PERFORMA ARMADA - ERA Trans</h2>
                 <p>Periode: <b>${mName} ${year}</b></p>
                 <table border="1">
                     <thead>
