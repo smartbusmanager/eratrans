@@ -463,15 +463,21 @@
     </div></div>
 
     <script>
-        const KEYS = { BUS: 'bus_pro_v39_buses', SCHED: 'bus_pro_v39_scheds', EXP: 'bus_pro_v39_exps', USER: 'bus_pro_session', PASS: 'bus_pro_passwords' };
+        const KEYS = { 
+    BUS: 'era_buses', 
+    SCHED: 'era_scheds', 
+    EXP: 'era_exps', 
+    USER: 'era_session', 
+    PASS: 'era_passwords' 
+};
         let buses = [], schedules = [], expenses = [], currDate = new Date();
         let currentUser = null;
         let passwords = { "Agus": "123", "Rudi": "123", "Admin": "madhacker", "Owner": "eratrans" };
         let myChart = null;
         let currentEditExpenseId = null;
 
-        const FIREBASE_URL = "L = "https://bus-managemen-5fca8-default-rtdb.asia-southeast1.firebasedatabase.app/eratrans/.json";
-
+        const FIREBASE_URL = "https://bus-managemen-5fca8-default-rtdb.asia-southeast1.firebasedatabase.app/eratrans/.json";
+		
         // --- LOGIN LOGIC ---
         function handleLogin() {
             const user = document.getElementById('user-select').value;
